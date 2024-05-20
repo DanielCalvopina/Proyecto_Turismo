@@ -1,4 +1,4 @@
-package proyecto_d_turismo;
+//package proyecto_d_turismo;
 
 public class Lugar {
     private String Nombre; //50 bytes
