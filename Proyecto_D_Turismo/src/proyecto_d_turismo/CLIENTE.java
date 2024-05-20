@@ -2,13 +2,13 @@ package proyecto_d_turismo;
 import java.util.LinkedHashMap;
 public class CLIENTE {
     //5 Caracteres
-    String Cedula;
+    private String Cedula;
     //10 Caracteres
-    String Nombre;
+    private String Nombre;
     //15 Caracteres
-    String Apellido;
+    private String Apellido;
     //15 Caracteres
-    String Direccion;
+    private String Direccion;
     //total bytes 90
     public CLIENTE(String Cedula,String Nombre,String Apellido,String Direccion){
         this.Cedula = Cedula;

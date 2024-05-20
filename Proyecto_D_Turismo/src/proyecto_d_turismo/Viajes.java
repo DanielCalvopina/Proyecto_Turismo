@@ -1,14 +1,14 @@
 package proyecto_d_turismo;
 public class Viajes {
     //5 caracteres
-    String Codigo;
-    Lugar Sitio;
+    private String Codigo;
+    protected Lugar Sitio;
     //2 caracteres
-    int Dias;
+    private int Dias;
     //2 caracteres
-    int Personas;
+    private int Personas;
     //4 caracteres
-    int Costo;
+    private int Costo;
     //42 caracteres
     public Viajes (String Codigo, Lugar Sitio, int Dias, int Personas, int Costo){
         this.Codigo = Codigo;
@@ -20,8 +20,8 @@ public class Viajes {
     public String getCodigo(){
         return Codigo;
     }
-    public String getLugar(){
-        return Lugar;
+    public Lugar getSitio(){
+        return Sitio;
     }
     public int getDias(){
         return Dias;
