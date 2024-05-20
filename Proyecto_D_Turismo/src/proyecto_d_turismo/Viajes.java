@@ -1,13 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyecto_d_turismo;
-
-/**
- *
- * @author USUARIO
- */
 public class Viajes {
-    
+    String Codigo;
+    String Lugar;
+    int Dias;
+    int Personas;
+    int Costo;
+    public Viajes (String Codigo, String Lugar, int Dias, int Personas, int Costo){
+        this.Codigo = Codigo;
+        this.Lugar = Lugar;
+        this.Dias = Dias;
+        this.Personas = Personas;
+        this.Costo = Costo;
+    }
+    public String getCodigo(){
+        return Codigo;
+    }
+    public String getLugar(){
+        return Lugar;
+    }
+    public int getDias(){
+        return Dias;
+    }
+    public int getPersonas(){
+        return Personas;
+    }
+    public int getCosto(){
+        return Costo;
+    }
 }
