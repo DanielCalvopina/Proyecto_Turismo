@@ -7,41 +7,9 @@ import javax.swing.JOptionPane;
 public class Lugar {
     private String Nombre; //50 bytes - 25
     private String Ciudad; //50 bytes - 25
-    private String Provincia; //50 bytes -25
     private boolean Pet_Friendly; //2 bytes
-    private boolean Wifi; //2 bytes
     private String Direccion; //80 bytes - 40 
     private String Descripcion; //150 bytes - 75
-    public Lugar(String Nombre, String Ciudad, String Provincia, 
-            boolean Pet_Friendly, boolean Wifi, String Direccion, String Descripcion){
-        this.Nombre = Nombre;
-        this.Ciudad = Ciudad;
-        this.Provincia = Provincia;
-        this.Pet_Friendly = Pet_Friendly;
-        this.Wifi = Wifi;
-        this.Direccion = Direccion;
-        this.Descripcion = Descripcion;
-    }
-    public String getNombre(){
-        return this.Nombre;
-    }
-    public String getCiudad(){
-        return this.Ciudad;
-    }
-    public String getProvincia(){
-        return this.Provincia;
-    }
-    public boolean getWifi(){
-        return this.Wifi;
-    }
-    public boolean getPet_Friendly(){
-        return this.Pet_Friendly;
-    }
-    public String getDireccion(){
-        return this.Direccion;
-    }
-    public String getDescripcion(){
-        return this.Descripcion;
-    }
+   
 }
 
