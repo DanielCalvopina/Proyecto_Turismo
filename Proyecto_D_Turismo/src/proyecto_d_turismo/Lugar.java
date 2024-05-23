@@ -10,6 +10,7 @@ public class Lugar {
     private boolean Pet_Friendly; //2 bytes
     private String Direccion; //80 bytes - 40 
     private String Descripcion; //150 bytes - 75
-   
+    private double Precio; //  32  - 4
+    //total 364 bytes
 }
 

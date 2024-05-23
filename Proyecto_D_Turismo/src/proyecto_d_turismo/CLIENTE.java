@@ -11,6 +11,6 @@ public class CLIENTE {
     private String Direccion;
     //10 caracteres
     private String Contraseña;
-//total bytes 116
+    //total bytes 116
     
 }
