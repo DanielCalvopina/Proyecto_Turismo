@@ -1,4 +1,7 @@
 package proyecto_d_turismo;
+
+import java.io.File;
+
 public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     
     public MENU_ADMINISTRADOR() {
@@ -21,7 +24,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         SAL_DATOS = new javax.swing.JPanel();
         CARGAR_DATOS = new javax.swing.JPanel();
         CONSULTA = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        CB_BUSCAR = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -137,10 +140,10 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
 
-        jComboBox3.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES", "LUGARES", " " }));
+        CB_BUSCAR.setBackground(new java.awt.Color(0, 0, 0));
+        CB_BUSCAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CB_BUSCAR.setForeground(new java.awt.Color(255, 255, 255));
+        CB_BUSCAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES", "LUGARES", " " }));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -176,7 +179,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80))))
         );
         CONSULTALayout.setVerticalGroup(
@@ -185,7 +188,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                 .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CONSULTALayout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jButton1))
                     .addGroup(CONSULTALayout.createSequentialGroup()
@@ -366,7 +369,14 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public 
+    public void Consulta(File Archivo,String Consultar){
+        if (Consultar == CB_BUSCAR.getSelectedItem().toString()){
+            
+        }
+        else {
+            
+        }
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -382,6 +392,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JButton BT_ING_DATOS;
     private javax.swing.JButton BT_SAL_DATOS;
     private javax.swing.JPanel CARGAR_DATOS;
+    private javax.swing.JComboBox<String> CB_BUSCAR;
     private javax.swing.JPanel CONSULTA;
     private javax.swing.JPanel ING_DATOS;
     private javax.swing.JPanel ING_DATOS1;
@@ -391,7 +402,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
