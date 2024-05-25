@@ -20,7 +20,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         BT_CONSULTA = new javax.swing.JButton();
         BT_CARG_DATOS = new javax.swing.JButton();
         BT_SAL_DATOS = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        PANEL_PRINCIPAL = new javax.swing.JPanel();
         SAL_DATOS = new javax.swing.JPanel();
         CARGAR_DATOS = new javax.swing.JPanel();
         CONSULTA = new javax.swing.JPanel();
@@ -29,7 +29,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         ING_DATOS = new javax.swing.JPanel();
-        ING_DATOS1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -89,12 +88,22 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         BT_ING_DATOS.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_ING_DATOS.setForeground(new java.awt.Color(255, 255, 0));
         BT_ING_DATOS.setText("Ing DATOS");
+        BT_ING_DATOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_ING_DATOSActionPerformed(evt);
+            }
+        });
         jPanel5.add(BT_ING_DATOS);
 
         BT_CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
         BT_CONSULTA.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_CONSULTA.setForeground(new java.awt.Color(255, 255, 0));
         BT_CONSULTA.setText("consulta");
+        BT_CONSULTA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_CONSULTAActionPerformed(evt);
+            }
+        });
         jPanel5.add(BT_CONSULTA);
 
         BT_CARG_DATOS.setBackground(new java.awt.Color(0, 0, 0));
@@ -111,7 +120,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5);
 
-        jPanel6.setLayout(new java.awt.CardLayout());
+        PANEL_PRINCIPAL.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout SAL_DATOSLayout = new javax.swing.GroupLayout(SAL_DATOS);
         SAL_DATOS.setLayout(SAL_DATOSLayout);
@@ -124,7 +133,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
             .addGap(0, 439, Short.MAX_VALUE)
         );
 
-        jPanel6.add(SAL_DATOS, "card4");
+        PANEL_PRINCIPAL.add(SAL_DATOS, "card4");
 
         javax.swing.GroupLayout CARGAR_DATOSLayout = new javax.swing.GroupLayout(CARGAR_DATOS);
         CARGAR_DATOS.setLayout(CARGAR_DATOSLayout);
@@ -137,7 +146,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
             .addGap(0, 439, Short.MAX_VALUE)
         );
 
-        jPanel6.add(CARGAR_DATOS, "card5");
+        PANEL_PRINCIPAL.add(CARGAR_DATOS, "card5");
 
         CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -198,11 +207,9 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.add(CONSULTA, "card2");
+        PANEL_PRINCIPAL.add(CONSULTA, "card2");
 
         ING_DATOS.setBackground(new java.awt.Color(0, 0, 0));
-
-        ING_DATOS1.setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
         jPanel7.setPreferredSize(new java.awt.Dimension(350, 350));
@@ -308,71 +315,54 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("INGRESAR");
 
-        javax.swing.GroupLayout ING_DATOS1Layout = new javax.swing.GroupLayout(ING_DATOS1);
-        ING_DATOS1.setLayout(ING_DATOS1Layout);
-        ING_DATOS1Layout.setHorizontalGroup(
-            ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(111, 111, 111))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(226, 226, 226))
-            .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                    .addContainerGap(341, Short.MAX_VALUE)
-                    .addComponent(jButton4)
-                    .addGap(332, 332, 332)))
-        );
-        ING_DATOS1Layout.setVerticalGroup(
-            ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
-                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton3)))
-                .addGap(0, 83, Short.MAX_VALUE))
-            .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                    .addContainerGap(361, Short.MAX_VALUE)
-                    .addComponent(jButton4)
-                    .addGap(32, 32, 32)))
-        );
-
         javax.swing.GroupLayout ING_DATOSLayout = new javax.swing.GroupLayout(ING_DATOS);
         ING_DATOS.setLayout(ING_DATOSLayout);
         ING_DATOSLayout.setHorizontalGroup(
             ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ING_DATOSLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ING_DATOS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(111, 111, 111))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(226, 226, 226))
+            .addGroup(ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                    .addContainerGap(341, Short.MAX_VALUE)
+                    .addComponent(jButton4)
+                    .addGap(332, 332, 332)))
         );
         ING_DATOSLayout.setVerticalGroup(
             ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ING_DATOSLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ING_DATOS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addGroup(ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ING_DATOSLayout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton3)))
+                .addGap(0, 100, Short.MAX_VALUE))
+            .addGroup(ING_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOSLayout.createSequentialGroup()
+                    .addContainerGap(378, Short.MAX_VALUE)
+                    .addComponent(jButton4)
+                    .addGap(32, 32, 32)))
         );
 
-        jPanel6.add(ING_DATOS, "card3");
+        PANEL_PRINCIPAL.add(ING_DATOS, "card6");
 
-        jPanel1.add(jPanel6);
+        jPanel1.add(PANEL_PRINCIPAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -387,13 +377,22 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BT_ING_DATOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ING_DATOSActionPerformed
+        PANEL_PRINCIPAL.removeAll();
+        PANEL_PRINCIPAL.add(ING_DATOS);
+        PANEL_PRINCIPAL.repaint();
+        PANEL_PRINCIPAL.revalidate();        
+    }//GEN-LAST:event_BT_ING_DATOSActionPerformed
+
+    private void BT_CONSULTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CONSULTAActionPerformed
+        PANEL_PRINCIPAL.removeAll();
+        PANEL_PRINCIPAL.add(CONSULTA);
+        PANEL_PRINCIPAL.repaint();
+        PANEL_PRINCIPAL.revalidate();     
+    }//GEN-LAST:event_BT_CONSULTAActionPerformed
     public void Consulta(File Archivo,String Consultar){
-        if (Consultar == CB_BUSCAR.getSelectedItem().toString()){
-            
-        }
-        else {
-            
-        }
+        
     }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -413,7 +412,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_BUSCAR;
     private javax.swing.JPanel CONSULTA;
     private javax.swing.JPanel ING_DATOS;
-    private javax.swing.JPanel ING_DATOS1;
+    private javax.swing.JPanel PANEL_PRINCIPAL;
     private javax.swing.JPanel SAL_DATOS;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -433,7 +432,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
