@@ -15,11 +15,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TT_USUARIO = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        TT_CONTRASENA = new javax.swing.JTextField();
+        INGRESO = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -57,9 +57,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 255, 255));
         jLabel1.setText("USUARIO:");
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 255, 255));
+        TT_USUARIO.setBackground(new java.awt.Color(51, 51, 51));
+        TT_USUARIO.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        TT_USUARIO.setForeground(new java.awt.Color(204, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 204));
@@ -69,14 +69,19 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 255, 255));
         jLabel4.setText("CONTRASEÑA:");
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(204, 255, 255));
+        TT_CONTRASENA.setBackground(new java.awt.Color(51, 51, 51));
+        TT_CONTRASENA.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        TT_CONTRASENA.setForeground(new java.awt.Color(204, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 255, 255));
-        jButton1.setText("INGRESAR");
+        INGRESO.setBackground(new java.awt.Color(51, 51, 51));
+        INGRESO.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        INGRESO.setForeground(new java.awt.Color(204, 255, 255));
+        INGRESO.setText("INGRESAR");
+        INGRESO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                INGRESOActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 51, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -109,12 +114,12 @@ public class Menu extends javax.swing.JFrame {
                                         .addGap(19, 19, 19)))
                                 .addGap(44, 44, 44)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
+                                    .addComponent(TT_CONTRASENA, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                    .addComponent(TT_USUARIO)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(INGRESO)
                                 .addGap(25, 25, 25)))))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
@@ -125,15 +130,15 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TT_USUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TT_CONTRASENA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(INGRESO)
                     .addComponent(jButton2))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -190,6 +195,44 @@ public class Menu extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void INGRESOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INGRESOActionPerformed
+        boolean administracion = false;
+        boolean usuario = false;
+        administracion = comprobadmin(TT_USUARIO.getText(),TT_CONTRASENA.getText());
+        if (administracion)
+        {
+          MENU_ADMINISTRADOR a = new MENU_ADMINISTRADOR();
+          a.setTitle("Administracion");
+          a.setVisible(true);
+          Setear();
+        }
+        /*else
+        {
+            usuario = comprobarusuario(TT_USUARIO.getText(),TT_CONTRASENA.getText().toString());
+            if(usuario){
+                MENU_CLIENTE a = new MENU_CLIENTE();
+                a.setTitle("CLIENTE");
+                a.setVisible(true);
+                Setear();
+            }
+        }*/
+    }//GEN-LAST:event_INGRESOActionPerformed
+    public boolean comprobadmin(String Usuario, String Contrasena)
+    {
+        if("Admin".equals(Usuario) && "123".equals(Contrasena)){
+            return true;
+        }
+        return false;
+    }
+    /*public boolean comprobarusuario(String Usuario, String Contrasena)
+    {
+        //Logica para ver si los usuarios estan o no en el documento
+    }*/
+    public void Setear(){
+        TT_USUARIO.setText("");
+        TT_CONTRASENA.setText("");
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -199,7 +242,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton INGRESO;
+    private javax.swing.JTextField TT_CONTRASENA;
+    private javax.swing.JTextField TT_USUARIO;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -210,7 +255,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
