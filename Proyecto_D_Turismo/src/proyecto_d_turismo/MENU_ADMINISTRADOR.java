@@ -124,6 +124,11 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         BT_SAL_DATOS.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_SAL_DATOS.setForeground(new java.awt.Color(255, 255, 0));
         BT_SAL_DATOS.setText("sALIDA DATOS");
+        BT_SAL_DATOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_SAL_DATOSActionPerformed(evt);
+            }
+        });
         jPanel5.add(BT_SAL_DATOS);
 
         jPanel1.add(jPanel5);
@@ -496,6 +501,10 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
             ConsultaLugares();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BT_SAL_DATOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOSActionPerformed
+        
+    }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
     public void ConsultaCliente(){
         
     }
@@ -503,13 +512,9 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         String inds [] = {"Codigo","Nombre","PrecioxDia","Capacidad","Pais","Ciudad"};
         BXP.setColumnIdentifiers(inds);
         TB_CONS.setModel(BXP);
-        Stack<Object[]> listado = this.LUGARES.getListadoLugares();
-        System.out.println("JALA 1");
-        for (Object[] lugar: listado){
-            System.out.println("1");
-            Object[] Lugar = listado.getFirst();
-            System.out.println("1");            
-            BXP.addRow(new Object[]{Lugar[0],Lugar[1],String.valueOf(Lugar[7]),String.valueOf(Lugar[8]),Lugar[3],Lugar[2]});
+        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
+        for (Object[] lugar: listado){           
+            BXP.addRow(new Object[]{lugar[0],lugar[1],String.valueOf(lugar[7]),String.valueOf(lugar[8]),lugar[3],lugar[2]});
             System.out.println(lugar);
 
         }

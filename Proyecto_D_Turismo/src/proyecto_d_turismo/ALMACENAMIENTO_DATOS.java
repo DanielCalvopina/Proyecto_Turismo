@@ -270,12 +270,12 @@ public class ALMACENAMIENTO_DATOS {
             return false;
         }
     }
-    public Stack getListadoLugares()
+    public ArrayList getListadoLugares()
     {
-        Object[] Lugares =new Object[10];
-        Stack<Object[]> listado = new Stack<Object[]>(); 
+        ArrayList<Object[]> listado = new ArrayList<Object[]>(); 
         try(RandomAccessFile RAC =new RandomAccessFile(file,"rw"))
         {
+            Object[] Lugares =new Object[10];
             RAC.seek(0);
             while(RAC.getFilePointer()<RAC.length())
             {
@@ -286,9 +286,9 @@ public class ALMACENAMIENTO_DATOS {
                 Boolean Wifi = false;
                 Boolean Petf = false;
                 String Dic = "";
-                double Prec = 0;
+                double Prec ;
                 String img="";
-                int Capacidad = 0;
+                int Capacidad ;
                 for(int i =0;i<CharsDe("CODIGO");i++)
                 {
                     char Lectura;
@@ -297,7 +297,6 @@ public class ALMACENAMIENTO_DATOS {
                         Cod+=Lectura;
                     }
                 }
-                Lugares[0] = Cod;
                 for(int i =0;i<CharsDe("NOMBRE");i++)
                 {
                     char Lectura;
@@ -306,7 +305,6 @@ public class ALMACENAMIENTO_DATOS {
                         Nom+=Lectura;
                     }
                 }
-                Lugares[1]=Nom;
                 for(int i =0;i<CharsDe("CIUDAD");i++)
                 {
                     char Lectura;
@@ -315,7 +313,6 @@ public class ALMACENAMIENTO_DATOS {
                         Ciu+=Lectura;
                     }
                 }
-                Lugares[2] = Ciu;
                 for(int i =0;i<CharsDe("PAIS");i++)
                 {
                     char Lectura;
@@ -324,11 +321,8 @@ public class ALMACENAMIENTO_DATOS {
                         Pais+=Lectura;
                     }
                 }
-                Lugares[3]=Pais;
                 Wifi = RAC.readBoolean();
-                Lugares[4] = Wifi;
                 Petf = RAC.readBoolean();
-                Lugares[5]=Petf;
                 for(int i =0;i<CharsDe("DIRECCION");i++)
                 {
                     char Lectura;
@@ -337,11 +331,8 @@ public class ALMACENAMIENTO_DATOS {
                         Dic+=Lectura;
                     }
                 }
-                Lugares[6] = Dic;
                 Prec = RAC.readDouble();
-                Lugares[7]=Prec;
                 Capacidad = RAC.readInt();
-                Lugares[8] = Capacidad;
                 for(int i =0;i<CharsDe("DI");i++)
                 {
                     char Lectura;
@@ -350,8 +341,7 @@ public class ALMACENAMIENTO_DATOS {
                         img=img+Lectura;
                     }
                 }
-                Lugares[9]= img;
-                listado.push(Lugares);
+                listado.add(new Object[] {Cod,Nom,Ciu,Pais,Wifi,Petf,Dic,Prec,Capacidad,img});
             }
             RAC.close();         
             System.out.println("Guardado Correctamene");
@@ -369,6 +359,58 @@ public class ALMACENAMIENTO_DATOS {
         }
         catch(IOException e)
         {
+        }
+    }
+    public void Ingresar_Documento(ArrayList<Object[]> NuevosLugares){
+        for (Object[] lugar: NuevosLugares){
+            boolean wifi = false;
+            boolean petf = false;
+            String Nombre = (String) lugar[1];
+            String Ciudad= (String) lugar[2];
+            String Pais = (String) lugar[3];
+            String Direccion = (String) lugar[6];    
+        
+            if ((Nombre.length() == 10) && (Ciudad.length() == 10) && (Pais.length() == 10) && (Direccion.length() == 30)){
+                Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion
+                   ,(double) lugar[7],(int)lugar[8]);
+            }
+            else if ((Nombre.length() <= 10) && (Ciudad.length() <= 10) && (Pais.length() <= 10) && (Direccion.length() <= 30))
+            {
+                if (Nombre.length() < 10){
+                    String espacios ="";
+                    for(int i=0; i< 10-Nombre.length() ; i++)
+                    {
+                    espacios += "-";
+                    }
+                Nombre = espacios+Nombre;
+                }
+                if (Ciudad.length() < 10){
+                    String espacios ="";
+                    for(int i=0; i< 10-Ciudad.length() ; i++)
+                    {
+                        espacios += "-";
+                    }
+                    Ciudad = espacios+Ciudad;
+                }
+                if (Pais.length() < 10){
+                    String espacios ="";
+                    for(int i=0; i< 10-Pais.length() ; i++)
+                    {
+                    espacios += "-";
+                    }
+                    Pais = espacios+Pais;
+                }
+                if (Direccion.length() < 30){
+                    String espacios ="";
+                    for(int i=0; i< 30-Direccion.length() ; i++)
+                    {
+                    espacios += "-";
+                    }
+                    Direccion = espacios+Direccion;
+                }
+                 Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion
+                   ,(double) lugar[7],(int)lugar[8]);
+            }
         }
     }
 }
