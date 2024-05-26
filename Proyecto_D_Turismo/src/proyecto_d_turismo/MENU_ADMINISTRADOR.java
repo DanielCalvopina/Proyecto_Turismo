@@ -1,8 +1,11 @@
 package proyecto_d_turismo;
-
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Stack;
+import javax.swing.table.DefaultTableModel;
 
 public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
+    private DefaultTableModel BXP = new DefaultTableModel();
     ALMACENAMIENTO_DATOS LUGARES;
     public MENU_ADMINISTRADOR(ALMACENAMIENTO_DATOS LUGARES) {
         this.LUGARES = LUGARES;
@@ -26,35 +29,35 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         BT_CARG_DATOS = new javax.swing.JButton();
         BT_SAL_DATOS = new javax.swing.JButton();
         PANEL_PRINCIPAL = new javax.swing.JPanel();
+        ING_DATOS = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        TT_WIFI = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        TT_PRECIO = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        TT_CAPACIDAD = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        TT_NOMBRE = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        TT_CIUDAD = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        TT_PAIS = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        TT_PETF = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        TT_DIRECCION = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         SAL_DATOS = new javax.swing.JPanel();
         CARGAR_DATOS = new javax.swing.JPanel();
         CONSULTA = new javax.swing.JPanel();
         CB_BUSCAR = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        ING_DATOS = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        TB_CONS = new javax.swing.JTable();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -127,93 +130,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         PANEL_PRINCIPAL.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout SAL_DATOSLayout = new javax.swing.GroupLayout(SAL_DATOS);
-        SAL_DATOS.setLayout(SAL_DATOSLayout);
-        SAL_DATOSLayout.setHorizontalGroup(
-            SAL_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        SAL_DATOSLayout.setVerticalGroup(
-            SAL_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
-        );
-
-        PANEL_PRINCIPAL.add(SAL_DATOS, "card4");
-
-        javax.swing.GroupLayout CARGAR_DATOSLayout = new javax.swing.GroupLayout(CARGAR_DATOS);
-        CARGAR_DATOS.setLayout(CARGAR_DATOSLayout);
-        CARGAR_DATOSLayout.setHorizontalGroup(
-            CARGAR_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        CARGAR_DATOSLayout.setVerticalGroup(
-            CARGAR_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
-        );
-
-        PANEL_PRINCIPAL.add(CARGAR_DATOS, "card5");
-
-        CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
-
-        CB_BUSCAR.setBackground(new java.awt.Color(0, 0, 0));
-        CB_BUSCAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        CB_BUSCAR.setForeground(new java.awt.Color(255, 255, 255));
-        CB_BUSCAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES", "LUGARES", " " }));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("BUSCAR");
-
-        jTable1.setBackground(new java.awt.Color(0, 0, 0));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout CONSULTALayout = new javax.swing.GroupLayout(CONSULTA);
-        CONSULTA.setLayout(CONSULTALayout);
-        CONSULTALayout.setHorizontalGroup(
-            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(90, 90, 90))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
-                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))))
-        );
-        CONSULTALayout.setVerticalGroup(
-            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CONSULTALayout.createSequentialGroup()
-                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CONSULTALayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1))
-                    .addGroup(CONSULTALayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        PANEL_PRINCIPAL.add(CONSULTA, "card2");
-
         ING_DATOS.setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
@@ -225,36 +141,43 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jLabel19.setText("WIFI");
         jPanel7.add(jLabel19);
 
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        TT_WIFI.setBackground(new java.awt.Color(0, 0, 0));
+        TT_WIFI.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TT_WIFI.setForeground(new java.awt.Color(255, 255, 255));
+        TT_WIFI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        TT_WIFI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                TT_WIFIActionPerformed(evt);
             }
         });
-        jPanel7.add(jComboBox1);
+        jPanel7.add(TT_WIFI);
 
         jLabel20.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("precio");
         jPanel7.add(jLabel20);
 
-        jTextField15.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField15.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField15.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel7.add(jTextField15);
+        TT_PRECIO.setBackground(new java.awt.Color(0, 0, 0));
+        TT_PRECIO.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
+        TT_PRECIO.setForeground(new java.awt.Color(255, 255, 255));
+        TT_PRECIO.setText("0.00");
+        jPanel7.add(TT_PRECIO);
 
         jLabel21.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("DESCRIPCION");
+        jLabel21.setText("capacidad");
         jPanel7.add(jLabel21);
 
-        jTextField16.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField16.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField16.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel7.add(jTextField16);
+        TT_CAPACIDAD.setBackground(new java.awt.Color(0, 0, 0));
+        TT_CAPACIDAD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TT_CAPACIDAD.setForeground(new java.awt.Color(255, 255, 255));
+        TT_CAPACIDAD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
+        TT_CAPACIDAD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TT_CAPACIDADActionPerformed(evt);
+            }
+        });
+        jPanel7.add(TT_CAPACIDAD);
 
         jPanel8.setBackground(new java.awt.Color(0, 0, 0));
         jPanel8.setPreferredSize(new java.awt.Dimension(350, 350));
@@ -265,51 +188,51 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jLabel11.setText("nombre");
         jPanel8.add(jLabel11);
 
-        jTextField18.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField18.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField18.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel8.add(jTextField18);
+        TT_NOMBRE.setBackground(new java.awt.Color(0, 0, 0));
+        TT_NOMBRE.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
+        TT_NOMBRE.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(TT_NOMBRE);
 
         jLabel23.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("ciudad");
         jPanel8.add(jLabel23);
 
-        jTextField19.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField19.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField19.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel8.add(jTextField19);
+        TT_CIUDAD.setBackground(new java.awt.Color(0, 0, 0));
+        TT_CIUDAD.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
+        TT_CIUDAD.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(TT_CIUDAD);
 
         jLabel24.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("PAIS");
         jPanel8.add(jLabel24);
 
-        jTextField20.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField20.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField20.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel8.add(jTextField20);
+        TT_PAIS.setBackground(new java.awt.Color(0, 0, 0));
+        TT_PAIS.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
+        TT_PAIS.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(TT_PAIS);
 
         jLabel25.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("PET FRIENDLY");
         jPanel8.add(jLabel25);
 
-        jComboBox2.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
-        jPanel8.add(jComboBox2);
+        TT_PETF.setBackground(new java.awt.Color(0, 0, 0));
+        TT_PETF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TT_PETF.setForeground(new java.awt.Color(255, 255, 255));
+        TT_PETF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        jPanel8.add(TT_PETF);
 
         jLabel27.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("DIRECCION");
         jPanel8.add(jLabel27);
 
-        jTextField23.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField23.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
-        jTextField23.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel8.add(jTextField23);
+        TT_DIRECCION.setBackground(new java.awt.Color(0, 0, 0));
+        TT_DIRECCION.setFont(new java.awt.Font("Felix Titling", 2, 18)); // NOI18N
+        TT_DIRECCION.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(TT_DIRECCION);
 
         jLabel12.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -324,6 +247,11 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("INGRESAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ING_DATOSLayout = new javax.swing.GroupLayout(ING_DATOS);
         ING_DATOS.setLayout(ING_DATOSLayout);
@@ -372,6 +300,99 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         PANEL_PRINCIPAL.add(ING_DATOS, "card6");
 
+        javax.swing.GroupLayout SAL_DATOSLayout = new javax.swing.GroupLayout(SAL_DATOS);
+        SAL_DATOS.setLayout(SAL_DATOSLayout);
+        SAL_DATOSLayout.setHorizontalGroup(
+            SAL_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        SAL_DATOSLayout.setVerticalGroup(
+            SAL_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        PANEL_PRINCIPAL.add(SAL_DATOS, "card4");
+
+        javax.swing.GroupLayout CARGAR_DATOSLayout = new javax.swing.GroupLayout(CARGAR_DATOS);
+        CARGAR_DATOS.setLayout(CARGAR_DATOSLayout);
+        CARGAR_DATOSLayout.setHorizontalGroup(
+            CARGAR_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        CARGAR_DATOSLayout.setVerticalGroup(
+            CARGAR_DATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        PANEL_PRINCIPAL.add(CARGAR_DATOS, "card5");
+
+        CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
+
+        CB_BUSCAR.setBackground(new java.awt.Color(0, 0, 0));
+        CB_BUSCAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CB_BUSCAR.setForeground(new java.awt.Color(255, 255, 255));
+        CB_BUSCAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES", "LUGARES", " " }));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("BUSCAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        TB_CONS.setBackground(new java.awt.Color(0, 0, 0));
+        TB_CONS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TB_CONS.setForeground(new java.awt.Color(255, 255, 255));
+        TB_CONS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(TB_CONS);
+
+        javax.swing.GroupLayout CONSULTALayout = new javax.swing.GroupLayout(CONSULTA);
+        CONSULTA.setLayout(CONSULTALayout);
+        CONSULTALayout.setHorizontalGroup(
+            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        CONSULTALayout.setVerticalGroup(
+            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CONSULTALayout.createSequentialGroup()
+                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton1))
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        PANEL_PRINCIPAL.add(CONSULTA, "card2");
+
         jPanel1.add(PANEL_PRINCIPAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -401,9 +422,98 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         PANEL_PRINCIPAL.revalidate();     
     }//GEN-LAST:event_BT_CONSULTAActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void TT_WIFIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TT_WIFIActionPerformed
+    }//GEN-LAST:event_TT_WIFIActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       boolean wifi = false;
+       boolean petf = false;
+       String Nombre = TT_NOMBRE.getText();
+       String Ciudad= TT_CIUDAD.getText();
+       String Pais = TT_PAIS.getText();
+       String Direccion = TT_DIRECCION.getText();
+       if("SI".equals(TT_WIFI.getSelectedItem().toString())){
+           wifi = true;
+       }
+       if("SI".equals(TT_PETF.getSelectedItem().toString())){
+           petf = true;
+       }
+       if ((Nombre.length() == 10) && (Ciudad.length() == 10) && (Pais.length() == 10) && (Direccion.length() == 30)){
+           LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion
+                   ,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+       }
+       else if ((Nombre.length() <= 10) && (Ciudad.length() <= 10) && (Pais.length() <= 10) && (Direccion.length() <= 30))
+       {
+           if (Nombre.length() < 10){
+               String espacios ="";
+               for(int i=0; i< 10-Nombre.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               Nombre = espacios+Nombre;
+           }
+           if (Ciudad.length() < 10){
+               String espacios ="";
+               for(int i=0; i< 10-Ciudad.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               Ciudad = espacios+Ciudad;
+           }
+           if (Pais.length() < 10){
+               String espacios ="";
+               for(int i=0; i< 10-Pais.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               Pais = espacios+Pais;
+           }
+           if (Direccion.length() < 30){
+               String espacios ="";
+               for(int i=0; i< 30-Direccion.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               Direccion = espacios+Direccion;
+           }
+            LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+       }
+       else
+       {
+            System.out.println("FUERA DE RANGO");
+       }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void TT_CAPACIDADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TT_CAPACIDADActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TT_CAPACIDADActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if ("CLIENTES".equals(CB_BUSCAR.getSelectedItem().toString())){
+            ConsultaCliente();
+        }
+        else {
+            ConsultaLugares();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public void ConsultaCliente(){
+        
+    }
+    public void ConsultaLugares(){
+        String inds [] = {"Codigo","Nombre","PrecioxDia","Capacidad","Pais","Ciudad"};
+        BXP.setColumnIdentifiers(inds);
+        TB_CONS.setModel(BXP);
+        Stack<Object[]> listado = this.LUGARES.getListadoLugares();
+        System.out.println("JALA 1");
+        for (Object[] lugar: listado){
+            System.out.println("1");
+            Object[] Lugar = listado.getFirst();
+            System.out.println("1");            
+            BXP.addRow(new Object[]{Lugar[0],Lugar[1],String.valueOf(Lugar[7]),String.valueOf(Lugar[8]),Lugar[3],Lugar[2]});
+            System.out.println(lugar);
+
+        }
+    }
     public void Consulta(File Archivo,String Consultar){
         
     }
@@ -427,12 +537,19 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel ING_DATOS;
     private javax.swing.JPanel PANEL_PRINCIPAL;
     private javax.swing.JPanel SAL_DATOS;
+    private javax.swing.JTable TB_CONS;
+    private javax.swing.JComboBox<String> TT_CAPACIDAD;
+    private javax.swing.JTextField TT_CIUDAD;
+    private javax.swing.JTextField TT_DIRECCION;
+    private javax.swing.JTextField TT_NOMBRE;
+    private javax.swing.JTextField TT_PAIS;
+    private javax.swing.JComboBox<String> TT_PETF;
+    private javax.swing.JTextField TT_PRECIO;
+    private javax.swing.JComboBox<String> TT_WIFI;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
@@ -448,12 +565,5 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField23;
     // End of variables declaration//GEN-END:variables
 }

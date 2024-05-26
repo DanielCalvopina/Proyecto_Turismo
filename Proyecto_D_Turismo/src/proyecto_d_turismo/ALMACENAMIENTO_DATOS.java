@@ -2,6 +2,7 @@ package proyecto_d_turismo;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Stack;
 import java.util.ArrayList;
 /*Uso de bits LUGAR
     Codigo 5 caracteres = 10 bits
@@ -52,6 +53,8 @@ public class ALMACENAMIENTO_DATOS {
                 RAC.writeChars(direccion);
                 RAC.writeDouble(precio);
                 RAC.writeInt(capacidad);
+                RAC.writeChars("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                System.out.println("GUARDADO CON EXITO");
             }
         }
         catch(IOException e)
@@ -121,12 +124,12 @@ public class ALMACENAMIENTO_DATOS {
             case "NOMBRE" -> 10;
             case "CIUDAD" -> 10;
             case "PAIS" -> 10;
-            case "WIFI" -> 5;
-            case "PETF" -> 5;
+            case "WIFI" -> 1;
+            case "PETF" -> 1;
             case "DIRECCION"->30;
-            case "PRECIO"->4;
+            case "PRECIO"->1;
             case "CAPACIDAD" -> 1;
-            case "DI"        ->100;
+            case "DI"        ->50;
             default -> -1;
         };
     }
@@ -178,10 +181,10 @@ public class ALMACENAMIENTO_DATOS {
                 bytesHasta = 10 + 20 + 20 + 20 + 1 + 1 + 60;
                 break;
             case "CAPACIDAD":
-                bytesHasta = 10 + 20 + 20 + 20 + 1 + 1 + 60 + 4;
+                bytesHasta = 10 + 20 + 20 + 20 + 1 + 1 + 60 + 32;
                 break;    
             case "DI":
-                bytesHasta = 10 + 20 + 20 + 20 + 1 + 1 + 60 + 4 + 100;
+                bytesHasta = 10 + 20 + 20 + 20 + 1 + 1 + 60 + 32 + 4;
                 break;
             default:
                 bytesHasta = -1;
@@ -192,7 +195,7 @@ public class ALMACENAMIENTO_DATOS {
     }
     //YA
     public long BytesHastaFinalPartiendoDe(String at) {
-        long aux = 336;
+        long aux = 168;
         at.toUpperCase();
         switch (at) {
             case "CODIGO":
@@ -267,48 +270,96 @@ public class ALMACENAMIENTO_DATOS {
             return false;
         }
     }
-    public Object[] getListadoLugares(String Categoria)
+    public Stack getListadoLugares()
     {
-        ArrayList<String> listado = new ArrayList<String>();
+        Object[] Lugares =new Object[10];
+        Stack<Object[]> listado = new Stack<Object[]>(); 
         try(RandomAccessFile RAC =new RandomAccessFile(file,"rw"))
         {
             RAC.seek(0);
             while(RAC.getFilePointer()<RAC.length())
             {
-                RAC.skipBytes((int)BytesDe("CODIGO"));
+                String Cod="";
                 String Nom ="";
+                String Ciu="";
+                String Pais="";
+                Boolean Wifi = false;
+                Boolean Petf = false;
+                String Dic = "";
+                double Prec = 0;
+                String img="";
+                int Capacidad = 0;
+                for(int i =0;i<CharsDe("CODIGO");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Cod+=Lectura;
+                    }
+                }
+                Lugares[0] = Cod;
                 for(int i =0;i<CharsDe("NOMBRE");i++)
                 {
-                    Nom=Nom+RAC.readChar();
-                }
-                System.out.println("Se copio el nombre "+Nom);
-                if(Nom.equals(Categoria))
-                {
-                    String Prd ="";
-                    for(int i =0;i<CharsDe("NOMBRE");i++)
-                    {
-                        Prd=Prd+RAC.readChar();
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Nom+=Lectura;
                     }
-                    //System.out.println("Se leyo el producto "+Prd);
-                    if(!listado.contains(Prd))
-                    {
-                        listado.add(Prd);
-                    }
-                    RAC.skipBytes((int)BytesHastaFinalPartiendoDe("NOMBRE"));
                 }
-                else
+                Lugares[1]=Nom;
+                for(int i =0;i<CharsDe("CIUDAD");i++)
                 {
-                    RAC.skipBytes((int)BytesHastaFinalPartiendoDe("CODIGO"));
-                }    
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Ciu+=Lectura;
+                    }
+                }
+                Lugares[2] = Ciu;
+                for(int i =0;i<CharsDe("PAIS");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Pais+=Lectura;
+                    }
+                }
+                Lugares[3]=Pais;
+                Wifi = RAC.readBoolean();
+                Lugares[4] = Wifi;
+                Petf = RAC.readBoolean();
+                Lugares[5]=Petf;
+                for(int i =0;i<CharsDe("DIRECCION");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Dic+=Lectura;
+                    }
+                }
+                Lugares[6] = Dic;
+                Prec = RAC.readDouble();
+                Lugares[7]=Prec;
+                Capacidad = RAC.readInt();
+                Lugares[8] = Capacidad;
+                for(int i =0;i<CharsDe("DI");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        img=img+Lectura;
+                    }
+                }
+                Lugares[9]= img;
+                listado.push(Lugares);
             }
             RAC.close();         
+            System.out.println("Guardado Correctamene");
         }
         catch(IOException e)
         {
-            
         }
-        Object[] x=listado.toArray(); 
-        return x;
+        return listado;
     }
     public void Borrar()
     {
@@ -318,7 +369,6 @@ public class ALMACENAMIENTO_DATOS {
         }
         catch(IOException e)
         {
-            
         }
     }
 }
