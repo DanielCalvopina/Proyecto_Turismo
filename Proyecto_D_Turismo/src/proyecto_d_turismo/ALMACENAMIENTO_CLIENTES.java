@@ -38,8 +38,7 @@ public class ALMACENAMIENTO_CLIENTES {
                 RAC.writeChars(cedula);
                 RAC.writeChars(nombre);
                 RAC.writeChars(apellido);
-                RAC.writeBoolean(direccion);
-                RAC.writeBoolean(pet);
+                RAC.writeChars(direccion);
             }
             RAC.close();         
         }
