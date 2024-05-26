@@ -1,10 +1,18 @@
 package proyecto_d_turismo;
 
-public class Menu extends javax.swing.JFrame {
+import java.io.File;
 
-    public Menu() {
+public class Menu extends javax.swing.JFrame {
+    private ALMACENAMIENTO_DATOS LUGARES;
+    public Menu(ALMACENAMIENTO_DATOS LUGARES) {
+        this.LUGARES = LUGARES;
         initComponents();
     }
+
+    private Menu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +37,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "COMPANIA DE TURISMO PEPE'S TRAVELS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Felix Titling", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Felix Titling", 3, 24), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(700, 50));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -201,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
         administracion = comprobadmin(TT_USUARIO.getText(),TT_CONTRASENA.getText());
         if (administracion)
         {
-          MENU_ADMINISTRADOR a = new MENU_ADMINISTRADOR();
+          MENU_ADMINISTRADOR a = new MENU_ADMINISTRADOR(LUGARES);
           a.setTitle("Administracion");
           a.setVisible(true);
           Setear();
