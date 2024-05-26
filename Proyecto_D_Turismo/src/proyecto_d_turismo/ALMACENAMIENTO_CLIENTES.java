@@ -4,7 +4,7 @@ package proyecto_d_turismo;
 import java.io.File;
 
 public class ALMACENAMIENTO_CLIENTES {
-    private File file;
+   /*/* private File file;
     private int CodigoCliente;
     /*Uso de bits CLIENTE
     Codigo 5 caracteres = 10 bits
@@ -13,7 +13,7 @@ public class ALMACENAMIENTO_CLIENTES {
     Apellido 15 caractetes = 30 bits
     Direccion 30 caracteres = 60 bits
     Total = 154 bits
-    */
+    
     public String CalcularCodigoCL(){
         CodigoCliente++;
         if (CodigoCliente >= 0){
@@ -48,5 +48,5 @@ public class ALMACENAMIENTO_CLIENTES {
             
         }
     }
-        
+        */
 }

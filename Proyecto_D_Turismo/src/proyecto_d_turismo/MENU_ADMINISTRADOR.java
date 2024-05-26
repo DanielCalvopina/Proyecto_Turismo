@@ -3,9 +3,14 @@ package proyecto_d_turismo;
 import java.io.File;
 
 public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
-    
-    public MENU_ADMINISTRADOR() {
+    ALMACENAMIENTO_DATOS LUGARES;
+    public MENU_ADMINISTRADOR(ALMACENAMIENTO_DATOS LUGARES) {
+        this.LUGARES = LUGARES;
         initComponents();
+    }
+
+    private MENU_ADMINISTRADOR() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
