@@ -224,6 +224,11 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jComboBox1);
 
         jLabel20.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
@@ -384,13 +389,16 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         PANEL_PRINCIPAL.repaint();
         PANEL_PRINCIPAL.revalidate();        
     }//GEN-LAST:event_BT_ING_DATOSActionPerformed
-
     private void BT_CONSULTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CONSULTAActionPerformed
         PANEL_PRINCIPAL.removeAll();
         PANEL_PRINCIPAL.add(CONSULTA);
         PANEL_PRINCIPAL.repaint();
         PANEL_PRINCIPAL.revalidate();     
     }//GEN-LAST:event_BT_CONSULTAActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     public void Consulta(File Archivo,String Consultar){
         
     }

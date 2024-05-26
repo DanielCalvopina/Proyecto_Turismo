@@ -1,9 +1,7 @@
 package proyecto_d_turismo;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-
 /*Uso de bits LUGAR
     Codigo 5 caracteres = 10 bits
     Nombre 10 caracteres = 20 bits
@@ -19,8 +17,7 @@ import java.io.RandomAccessFile;
 public class ALMACENAMIENTO_DATOS {
     private File file;
     private int CodigoLugar ;
-    public ALMACENAMIENTO_DATOS(File A)
-    {
+    public ALMACENAMIENTO_DATOS(File A){
         file=A;
         this.CodigoLugar = 0;
     }
@@ -42,8 +39,7 @@ public class ALMACENAMIENTO_DATOS {
     {
         try(RandomAccessFile RAC=new RandomAccessFile(file,"rw"))
         {
-            if(!Existe_CL(nombre))
-            {
+            if(!Existe_CL(nombre)){
                 RAC.seek(RAC.length());
                 RAC.writeChars(CalcularCodigoLU());
                 RAC.writeChars(nombre);
@@ -55,15 +51,12 @@ public class ALMACENAMIENTO_DATOS {
                 RAC.writeDouble(precio);
                 RAC.writeInt(capacidad);
             }
-            RAC.close();         
         }
         catch(IOException e)
-        {
-            
+        {        
         }
     }
-     public long BuscarPunteroAtributo(String AT,String Codigo)
-    {
+     public long BuscarPunteroAtributo(String AT,String Codigo){
         AT=AT.toUpperCase();
         long AP=BuscarPuntero(Codigo);
         //System.out.println("Puntero inicial en "+BuscarPuntero(Codigo));

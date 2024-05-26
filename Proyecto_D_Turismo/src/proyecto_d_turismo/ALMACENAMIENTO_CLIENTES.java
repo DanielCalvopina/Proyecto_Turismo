@@ -27,7 +27,7 @@ public class ALMACENAMIENTO_CLIENTES {
         }
         return "";
     }
-        public void Ingresar_Cliente(String cedula, String nombre,String , String apellido,String direccion )
+    public void Ingresar_Cliente(String cedula, String nombre,String , String apellido,String direccion )
     {
         try(RandomAccessFile RAC=new RandomAccessFile(file,"rw"))
         {
@@ -48,4 +48,5 @@ public class ALMACENAMIENTO_CLIENTES {
             
         }
     }
+        
 }
