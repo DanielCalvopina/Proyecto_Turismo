@@ -96,6 +96,11 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         ACTUALIZAR.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         ACTUALIZAR.setForeground(new java.awt.Color(255, 255, 0));
         ACTUALIZAR.setText("actualizar");
+        ACTUALIZAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ACTUALIZARActionPerformed(evt);
+            }
+        });
         jPanel5.add(ACTUALIZAR);
 
         BT_ING_DATOS.setBackground(new java.awt.Color(0, 0, 0));
@@ -595,6 +600,10 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
             System.out.println("Imagen seleccionada: " + selectedFile.getAbsolutePath());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void ACTUALIZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACTUALIZARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ACTUALIZARActionPerformed
     private static void moveFileToDirectory(File sourceFile, String destinationDirectory) throws IOException {
         Path sourcePath = sourceFile.toPath();
         Path destinationPath = new File(destinationDirectory, sourceFile.getName()).toPath();

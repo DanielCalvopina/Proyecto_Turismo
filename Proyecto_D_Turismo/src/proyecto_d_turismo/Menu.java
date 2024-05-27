@@ -226,7 +226,7 @@ public class Menu extends javax.swing.JFrame {
           Setear();
         }
         else if(usuario){
-            MENU_CLIENTE a = new MENU_CLIENTE();
+            MENU_CLIENTE a = new MENU_CLIENTE(LUGARES, CLIENTES, LUGARES.getListadoLugares());
             a.setTitle("CLIENTE");
             a.setVisible(true);
             Setear();

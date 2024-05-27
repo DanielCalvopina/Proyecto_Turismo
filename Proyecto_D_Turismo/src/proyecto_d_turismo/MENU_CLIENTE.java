@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto_d_turismo;
-
+import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
 /**
  *
  * @author USUARIO
@@ -13,10 +15,23 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     /**
      * Creates new form MENU_CLIENTE
      */
-    public MENU_CLIENTE() {
+    private String seleccionNpersonas;
+    private String seleccionNdias;
+    private ArrayList<Object[]> ListaLugares;;
+    ALMACENAMIENTO_DATOS LUGARES;
+    ALMACENAMIENTO_CLIENTES CLIENTES;
+
+    public MENU_CLIENTE(ALMACENAMIENTO_DATOS LUGARES, ALMACENAMIENTO_CLIENTES CLIENTES, ArrayList<Object[]> ListaLugares) {
+        this.ListaLugares = LUGARES.getListadoLugares();
+        this.LUGARES = LUGARES;
+        this.CLIENTES = CLIENTES;
         initComponents();
     }
 
+    private MENU_CLIENTE() {
+        this.ListaLugares = LUGARES.getListadoLugares();
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,8 +65,8 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        ComboBoxNPersonas = new javax.swing.JComboBox<>();
+        ComboBoxNDias = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -60,7 +75,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        CB_DESTINO = new javax.swing.JComboBox<>();
+        ComboBoxLugar = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -96,6 +111,11 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         BT_SAL_DATOS.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_SAL_DATOS.setForeground(new java.awt.Color(255, 255, 0));
         BT_SAL_DATOS.setText("actualizar");
+        BT_SAL_DATOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_SAL_DATOSActionPerformed(evt);
+            }
+        });
         jPanel3.add(BT_SAL_DATOS);
 
         BT_SAL_DATOS1.setBackground(new java.awt.Color(0, 0, 0));
@@ -186,20 +206,25 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(204, 204, 204));
         jLabel28.setText("#DIAS");
 
-        jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxNPersonas.setBackground(new java.awt.Color(51, 51, 51));
+        ComboBoxNPersonas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ComboBoxNPersonas.setForeground(new java.awt.Color(204, 204, 204));
+        ComboBoxNPersonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        ComboBoxNPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxNPersonasActionPerformed(evt);
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(51, 51, 51));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(204, 204, 204));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        ComboBoxNDias.setBackground(new java.awt.Color(51, 51, 51));
+        ComboBoxNDias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ComboBoxNDias.setForeground(new java.awt.Color(204, 204, 204));
+        ComboBoxNDias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        ComboBoxNDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxNDiasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -211,11 +236,11 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ComboBoxNPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ComboBoxNDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -224,11 +249,11 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxNPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxNDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -264,10 +289,9 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("---------------------------");
 
-        CB_DESTINO.setBackground(new java.awt.Color(0, 0, 0));
-        CB_DESTINO.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        CB_DESTINO.setForeground(new java.awt.Color(255, 255, 255));
-        CB_DESTINO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/T" }));
+        ComboBoxLugar.setBackground(new java.awt.Color(0, 0, 0));
+        ComboBoxLugar.setForeground(new java.awt.Color(255, 255, 255));
+        ComboBoxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout ING_DATOS1Layout = new javax.swing.GroupLayout(ING_DATOS1);
         ING_DATOS1.setLayout(ING_DATOS1Layout);
@@ -277,7 +301,9 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -287,7 +313,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jButton4)
                                 .addGap(42, 42, 42)))
-                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -302,7 +328,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
-                                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -319,10 +345,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                                .addComponent(CB_DESTINO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(183, 183, 183)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(6, 6, 6)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DESCRIPCION1)
@@ -341,14 +364,13 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         ING_DATOS1Layout.setVerticalGroup(
             ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(CB_DESTINO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                    .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(29, 29, 29)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(DESCRIPCION1)
@@ -364,12 +386,12 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
+                                .addGap(130, 130, 130)
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel20)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
+                                .addGap(51, 51, 51)
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,7 +437,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 387, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel6, "card3");
@@ -428,7 +450,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 387, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel9, "card4");
@@ -441,7 +463,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 387, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel10, "card5");
@@ -462,10 +484,24 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void ComboBoxNPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNPersonasActionPerformed
+        seleccionNpersonas = (String) ComboBoxNPersonas.getSelectedItem();
+    }//GEN-LAST:event_ComboBoxNPersonasActionPerformed
 
+    private void ComboBoxNDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNDiasActionPerformed
+        seleccionNdias = (String) ComboBoxNDias.getSelectedItem();
+    }//GEN-LAST:event_ComboBoxNDiasActionPerformed
+
+    private void BT_SAL_DATOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOSActionPerformed
+        Anadir_Lugares();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
+
+    private void Anadir_Lugares(){
+        for(int i = 0; i < ListaLugares.size(); i ++){
+            ComboBoxLugar.addItem(Arrays.toString(ListaLugares.get(i)));
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -500,19 +536,18 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_SAL_DATOS;
     private javax.swing.JButton BT_SAL_DATOS1;
     private javax.swing.JButton BT_SAL_DATOS2;
     private javax.swing.JButton BT_SAL_DATOS3;
-    private javax.swing.JComboBox<String> CB_DESTINO;
+    private javax.swing.JComboBox<String> ComboBoxLugar;
+    private javax.swing.JComboBox<String> ComboBoxNDias;
+    private javax.swing.JComboBox<String> ComboBoxNPersonas;
     private javax.swing.JLabel DESCRIPCION1;
     private javax.swing.JLabel DESCRIPCION2;
     private javax.swing.JPanel ING_DATOS1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
