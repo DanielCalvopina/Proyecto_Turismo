@@ -1,7 +1,12 @@
 package proyecto_d_turismo;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Stack;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
@@ -26,8 +31,8 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         ACTUALIZAR = new javax.swing.JButton();
         BT_ING_DATOS = new javax.swing.JButton();
         BT_CONSULTA = new javax.swing.JButton();
-        BT_CARG_DATOS = new javax.swing.JButton();
-        BT_SAL_DATOS = new javax.swing.JButton();
+        TT_CARGA = new javax.swing.JButton();
+        TT_SALIDA = new javax.swing.JButton();
         PANEL_PRINCIPAL = new javax.swing.JPanel();
         ING_DATOS = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -114,22 +119,27 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         });
         jPanel5.add(BT_CONSULTA);
 
-        BT_CARG_DATOS.setBackground(new java.awt.Color(0, 0, 0));
-        BT_CARG_DATOS.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
-        BT_CARG_DATOS.setForeground(new java.awt.Color(255, 255, 0));
-        BT_CARG_DATOS.setText("cargar datos");
-        jPanel5.add(BT_CARG_DATOS);
-
-        BT_SAL_DATOS.setBackground(new java.awt.Color(0, 0, 0));
-        BT_SAL_DATOS.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
-        BT_SAL_DATOS.setForeground(new java.awt.Color(255, 255, 0));
-        BT_SAL_DATOS.setText("sALIDA DATOS");
-        BT_SAL_DATOS.addActionListener(new java.awt.event.ActionListener() {
+        TT_CARGA.setBackground(new java.awt.Color(0, 0, 0));
+        TT_CARGA.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
+        TT_CARGA.setForeground(new java.awt.Color(255, 255, 0));
+        TT_CARGA.setText("cargar datos");
+        TT_CARGA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SAL_DATOSActionPerformed(evt);
+                TT_CARGAActionPerformed(evt);
             }
         });
-        jPanel5.add(BT_SAL_DATOS);
+        jPanel5.add(TT_CARGA);
+
+        TT_SALIDA.setBackground(new java.awt.Color(0, 0, 0));
+        TT_SALIDA.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
+        TT_SALIDA.setForeground(new java.awt.Color(255, 255, 0));
+        TT_SALIDA.setText("sALIDA DATOS");
+        TT_SALIDA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TT_SALIDAActionPerformed(evt);
+            }
+        });
+        jPanel5.add(TT_SALIDA);
 
         jPanel1.add(jPanel5);
 
@@ -502,9 +512,49 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void BT_SAL_DATOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOSActionPerformed
+    private void TT_SALIDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TT_SALIDAActionPerformed
+    JFileChooser chooser = new JFileChooser();
+    chooser.setDialogTitle("Seleccione un Directorio");
+    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    chooser.setAcceptAllFileFilterUsed(false);
+    int result = chooser.showOpenDialog(null);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File directory = chooser.getSelectedFile();
+        File targetFile = new File(directory, "datos.dat");
+        File sourceFile = LUGARES.getfile(); // Assuming this returns a File
         
-    }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
+        try {
+            if (!targetFile.exists()) {
+                if (targetFile.createNewFile()) {
+                    Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    System.out.println("Archivo creado: " + targetFile.getAbsolutePath());
+                } else {
+                    System.out.println("No se pudo crear el archivo.");
+                }
+            } else {
+                System.out.println("El archivo ya existe.");
+            }
+        } catch (IOException e) {
+            System.err.println("Error al crear el archivo: " + e.getMessage());
+            e.printStackTrace(); // Print the full stack trace for debugging
+        }
+    } else {
+        System.out.println("No se seleccionó ningún directorio.");
+    }
+    }//GEN-LAST:event_TT_SALIDAActionPerformed
+    private void TT_CARGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TT_CARGAActionPerformed
+        JFileChooser jFileChooser3 = new JFileChooser();
+            jFileChooser3.setAcceptAllFileFilterUsed(false); 
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de datos(*.dat)", "dat");
+            jFileChooser3.addChoosableFileFilter(filter); 
+            jFileChooser3.setDialogTitle("Selecciona un archivo para cargar los datos");
+            if (jFileChooser3.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) 
+            {
+                File file = jFileChooser3.getSelectedFile();
+                ALMACENAMIENTO_DATOS carga = new ALMACENAMIENTO_DATOS(file); 
+                LUGARES.Ingresar_Documento(carga.getListadoLugares());
+            }
+    }//GEN-LAST:event_TT_CARGAActionPerformed
     public void ConsultaCliente(){
         
     }
@@ -532,10 +582,8 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ACTUALIZAR;
-    private javax.swing.JButton BT_CARG_DATOS;
     private javax.swing.JButton BT_CONSULTA;
     private javax.swing.JButton BT_ING_DATOS;
-    private javax.swing.JButton BT_SAL_DATOS;
     private javax.swing.JPanel CARGAR_DATOS;
     private javax.swing.JComboBox<String> CB_BUSCAR;
     private javax.swing.JPanel CONSULTA;
@@ -544,12 +592,14 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel SAL_DATOS;
     private javax.swing.JTable TB_CONS;
     private javax.swing.JComboBox<String> TT_CAPACIDAD;
+    private javax.swing.JButton TT_CARGA;
     private javax.swing.JTextField TT_CIUDAD;
     private javax.swing.JTextField TT_DIRECCION;
     private javax.swing.JTextField TT_NOMBRE;
     private javax.swing.JTextField TT_PAIS;
     private javax.swing.JComboBox<String> TT_PETF;
     private javax.swing.JTextField TT_PRECIO;
+    private javax.swing.JButton TT_SALIDA;
     private javax.swing.JComboBox<String> TT_WIFI;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -571,4 +621,5 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private File faux;
 }

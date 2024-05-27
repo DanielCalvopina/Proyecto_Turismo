@@ -137,7 +137,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_CONSULTAActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="BT_CARG_DATOS">
+            <Component class="javax.swing.JButton" name="TT_CARGA">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -150,8 +150,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="cargar datos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TT_CARGAActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="BT_SAL_DATOS">
+            <Component class="javax.swing.JButton" name="TT_SALIDA">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -165,7 +168,7 @@
                 <Property name="text" type="java.lang.String" value="sALIDA DATOS"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_SAL_DATOSActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TT_SALIDAActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

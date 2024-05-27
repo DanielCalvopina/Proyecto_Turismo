@@ -413,4 +413,7 @@ public class ALMACENAMIENTO_DATOS {
             }
         }
     }
+    public File getfile(){
+        return file;
+    }
 }
