@@ -9,7 +9,7 @@ public class Proyecto_D_Turismo {
         File cli=new File("D://cli.dat");
         ALMACENAMIENTO_DATOS b =new ALMACENAMIENTO_DATOS(u);
         ALMACENAMIENTO_CLIENTES c = new ALMACENAMIENTO_CLIENTES(cli);
-        b.Borrar();
+        //b.Borrar();
         Menu a = new Menu(b, c);
         a.setVisible(true);
         a.setTitle("Menu");

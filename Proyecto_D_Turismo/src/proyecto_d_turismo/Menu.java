@@ -217,6 +217,7 @@ public class Menu extends javax.swing.JFrame {
         boolean administracion = false;
         boolean usuario = false;
         administracion = comprobadmin(TT_USUARIO.getText(),TT_CONTRASENA.getText());
+        usuario = comprobarusuario(TT_USUARIO.getText(),TT_CONTRASENA.getText());
         if (administracion)
         {
           MENU_ADMINISTRADOR a = new MENU_ADMINISTRADOR(LUGARES);
@@ -224,12 +225,7 @@ public class Menu extends javax.swing.JFrame {
           a.setVisible(true);
           Setear();
         }
-        else
-        {
-            jLabel6.setText("Usuario o Clave incorrectos");
-        }
-        usuario = comprobarusuario(TT_USUARIO.getText(),TT_CONTRASENA.getText());
-        if(usuario){
+        else if(usuario){
             MENU_CLIENTE a = new MENU_CLIENTE();
             a.setTitle("CLIENTE");
             a.setVisible(true);
