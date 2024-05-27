@@ -77,7 +77,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         LabelWifi = new javax.swing.JLabel();
         LabelDesc = new javax.swing.JLabel();
         LabelDir = new javax.swing.JLabel();
-        ComboBoxLugar = new javax.swing.JComboBox<>();
+        cb_lugar = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -154,6 +154,11 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("RESERVAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,7 +190,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
 
         DESCRIPCION2.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
         DESCRIPCION2.setForeground(new java.awt.Color(255, 255, 255));
-        DESCRIPCION2.setText("DESCRIPCION:");
+        DESCRIPCION2.setText("capacidad");
 
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -280,12 +285,12 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         LabelDir.setForeground(new java.awt.Color(255, 255, 255));
         LabelDir.setText("---------------------------");
 
-        ComboBoxLugar.setBackground(new java.awt.Color(0, 0, 0));
-        ComboBoxLugar.setForeground(new java.awt.Color(255, 255, 255));
-        ComboBoxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBoxLugar.addActionListener(new java.awt.event.ActionListener() {
+        cb_lugar.setBackground(new java.awt.Color(0, 0, 0));
+        cb_lugar.setForeground(new java.awt.Color(255, 255, 255));
+        cb_lugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/T" }));
+        cb_lugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxLugarActionPerformed(evt);
+                cb_lugarActionPerformed(evt);
             }
         });
 
@@ -308,7 +313,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -356,12 +361,15 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(6, 6, 6)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DESCRIPCION1)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                                .addComponent(DESCRIPCION2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))))
+                                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DESCRIPCION1)
+                                    .addGroup(ING_DATOS1Layout.createSequentialGroup()
+                                        .addComponent(DESCRIPCION2)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(LabelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
@@ -375,7 +383,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -502,18 +510,49 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxNDiasActionPerformed
 
     private void BT_SAL_DATOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOSActionPerformed
-        Anadir_Lugares();
-        // TODO add your handling code here:
+        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
+        for (Object[] lugar: listado){           
+            cb_lugar.addItem(lugar[1].toString());
+        }
     }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
 
-    private void ComboBoxLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxLugarActionPerformed
-        Seleccion = ComboBoxLugar.getSelectedObjects();
-        System.out.print(Seleccion.toString());
-        String aux = Seleccion[0].toString();
-        seleccionLugar = aux.substring(1, 6);
-        System.out.print(seleccionLugar);
-        
-    }//GEN-LAST:event_ComboBoxLugarActionPerformed
+    private void cb_lugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lugarActionPerformed
+        String nombre = cb_lugar.getSelectedItem().toString();
+        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
+        for (Object[] lugar: listado){  
+            if (lugar[1].toString().equals(nombre)){
+                boolean WIFI = (boolean) lugar[4];
+                LabelNombre.setText("");
+                LabelNombre.setText(lugar[1].toString());
+                LabelCiudad.setText("");
+                LabelCiudad.setText(lugar[2].toString());
+                LabelPais.setText("");
+                LabelPais.setText(lugar[3].toString());
+                if ((boolean) lugar[4]){
+                    LabelWifi.setText("");
+                    LabelWifi.setText("si");
+                }
+                else{
+                    LabelWifi.setText("");
+                    LabelWifi.setText("no");
+                }
+                if ((boolean) lugar[5]){
+                    LabelPetF.setText("");
+                    LabelPetF.setText("si");
+                }
+                else{
+                    LabelWifi.setText("");
+                    LabelWifi.setText("no");
+                }
+                LabelPrecio.setText("");
+                LabelPrecio.setText(lugar[6].toString());
+                LabelDir.setText("");
+                LabelDir.setText(lugar[7].toString());
+                LabelDesc.setText("");
+                LabelDesc.setText(lugar[8].toString());
+            }
+        }
+    }//GEN-LAST:event_cb_lugarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.out.println("Lugar seleccionado: " + seleccionLugar);
@@ -528,14 +567,15 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         //jButton1.setIcon(LUGARES.get(Seleccion[0].toString(), "DI"));
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void Anadir_Lugares(){
         for(int i = 0; i < ListaLugares.size(); i ++){
-            ComboBoxLugar.addItem(Arrays.toString(ListaLugares.get(i)));
+            cb_lugar.addItem(Arrays.toString(ListaLugares.get(i)));
         }
     }
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -572,7 +612,6 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JButton BT_SAL_DATOS1;
     private javax.swing.JButton BT_SAL_DATOS2;
     private javax.swing.JButton BT_SAL_DATOS3;
-    private javax.swing.JComboBox<String> ComboBoxLugar;
     private javax.swing.JComboBox<String> ComboBoxNDias;
     private javax.swing.JComboBox<String> ComboBoxNPersonas;
     private javax.swing.JLabel DESCRIPCION1;
@@ -586,6 +625,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPetF;
     private javax.swing.JLabel LabelPrecio;
     private javax.swing.JLabel LabelWifi;
+    private javax.swing.JComboBox<String> cb_lugar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
