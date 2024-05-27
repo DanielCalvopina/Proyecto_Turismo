@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -257,6 +258,11 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("cargar imagen");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
@@ -454,8 +460,21 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
            petf = true;
        }
        if ((Nombre.length() == 10) && (Ciudad.length() == 10) && (Pais.length() == 10) && (Direccion.length() == 30)){
-           LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion
-                   ,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+           if (selectedFile != null)
+           {
+               if (Direccion.length() < 30){
+               String espacios ="";
+               for(int i=0; i< 50-imagen.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               imagen = espacios+imagen;
+            }
+                LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()),selectedFile.getAbsolutePath());
+           }
+           else{
+                 LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+           }
        }
        else if ((Nombre.length() <= 10) && (Ciudad.length() <= 10) && (Pais.length() <= 10) && (Direccion.length() <= 30))
        {
@@ -491,7 +510,21 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                }
                Direccion = espacios+Direccion;
            }
-            LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+           if (selectedFile != null)
+            {
+                if (Direccion.length() < 30){
+               String espacios ="";
+               for(int i=0; i< 50-imagen.length() ; i++)
+               {
+                  espacios += "-";
+               }
+               imagen = espacios+imagen;
+            }
+                LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()),this.imagen);
+            }
+           else{
+                LUGARES.Ingresar_Lugar(Nombre,Ciudad,Pais,wifi, petf,Direccion,Double.valueOf(TT_PRECIO.getText()),Integer.parseInt(TT_CAPACIDAD.getSelectedItem().toString()));
+            }
        }
        else
        {
@@ -535,7 +568,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                 System.out.println("El archivo ya existe.");
             }
         } catch (IOException e) {
-            System.err.println("Error al crear el archivo: " + e.getMessage());
+            System.err.println("Error al crear el archivo: jdil" + e.getMessage());
             e.printStackTrace(); // Print the full stack trace for debugging
         }
     } else {
@@ -555,6 +588,24 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
                 LUGARES.Ingresar_Documento(carga.getListadoLugares());
             }
     }//GEN-LAST:event_TT_CARGAActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
+        fileChooser.addChoosableFileFilter(filter);
+        fileChooser.setDialogTitle("Selecciona una imagen para cargar");
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            this.selectedFile = fileChooser.getSelectedFile();
+            // Aquí puedes manejar la imagen seleccionada
+            imagen = selectedFile.getAbsolutePath();
+            System.out.println("Imagen seleccionada: " + selectedFile.getAbsolutePath());
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void ConsultaCliente(){
         
     }
@@ -621,5 +672,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    private File faux;
+    private File selectedFile ;
+    private String imagen;
 }

@@ -61,6 +61,29 @@ public class ALMACENAMIENTO_DATOS {
         {        
         }
     }
+    public void Ingresar_Lugar(String nombre, String ciudad,String pais, Boolean wifi,Boolean pet,String direccion,Double precio, int capacidad ,String imagen)
+    {
+        try(RandomAccessFile RAC=new RandomAccessFile(file,"rw"))
+        {
+            if(!Existe(nombre)){
+                RAC.seek(RAC.length());
+                RAC.writeChars(CalcularCodigoLU());
+                RAC.writeChars(nombre);
+                RAC.writeChars(ciudad);
+                RAC.writeChars(pais);
+                RAC.writeBoolean(wifi);
+                RAC.writeBoolean(pet);
+                RAC.writeChars(direccion);
+                RAC.writeDouble(precio);
+                RAC.writeInt(capacidad);
+                RAC.writeChars(imagen);
+                System.out.println("GUARDADO CON EXITO");
+            }
+        }
+        catch(IOException e)
+        {        
+        }
+    }
     //ya
      public long BuscarPunteroAtributo(String AT,String Codigo){
         AT=AT.toUpperCase();
