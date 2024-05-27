@@ -2,6 +2,7 @@ package proyecto_d_turismo;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -590,7 +591,7 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     }//GEN-LAST:event_TT_CARGAActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif");
         fileChooser.addChoosableFileFilter(filter);
@@ -599,13 +600,21 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         int result = fileChooser.showOpenDialog(null);
 
         if (result == JFileChooser.APPROVE_OPTION) {
-            this.selectedFile = fileChooser.getSelectedFile();
-            // Aquí puedes manejar la imagen seleccionada
-            imagen = selectedFile.getAbsolutePath();
-            System.out.println("Imagen seleccionada: " + selectedFile.getAbsolutePath());
-        }
-        
+            File selectedFile = fileChooser.getSelectedFile();
+            String destinationDirectory = "C:\\Users\\USUARIO\\OneDrive\\Documents\\GitHub\\Proyecto_Turismo\\Proyecto_D_Turismo\\src\\proyecto_d_turismo"; // Ruta del directorio destino
+            try {
+                moveFileToDirectory(selectedFile, destinationDirectory);
+                System.out.println("Imagen movida correctamente a: " + destinationDirectory);
+            } catch (IOException e) {
+                System.err.println("Error al mover la imagen: " + e.getMessage());
+            }
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
+    private static void moveFileToDirectory(File sourceFile, String destinationDirectory) throws IOException {
+        Path sourcePath = sourceFile.toPath();
+        Path destinationPath = new File(destinationDirectory, sourceFile.getName()).toPath();
+        Files.move(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+    }
     public void ConsultaCliente(){
         
     }
