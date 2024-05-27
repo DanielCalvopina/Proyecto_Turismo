@@ -18,6 +18,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
      */
     private String seleccionNpersonas;
     private String seleccionNdias;
+    private String seleccionLugar;
     private ArrayList<Object[]> ListaLugares;;
     private Object[] Seleccion;
     ALMACENAMIENTO_DATOS LUGARES;
@@ -506,20 +507,24 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
 
     private void ComboBoxLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxLugarActionPerformed
-        Seleccion = (Object[]) ComboBoxLugar.getSelectedItem();
+        Seleccion = ComboBoxLugar.getSelectedObjects();
+        System.out.print(Seleccion.toString());
+        String aux = Seleccion[0].toString();
+        seleccionLugar = aux.substring(1, 6);
+        System.out.print(seleccionLugar);
         
     }//GEN-LAST:event_ComboBoxLugarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println("Lugar seleccionado: " + Seleccion[0].toString());
-        LabelNombre.setText(LUGARES.get(Seleccion[0].toString(), "NOMBRE"));
-        LabelCiudad.setText(LUGARES.get(Seleccion[0].toString(), "CIUDAD"));
-        LabelPais.setText(LUGARES.get(Seleccion[0].toString(), "PAIS"));
-        LabelPrecio.setText(LUGARES.get(Seleccion[0].toString(), "PRECIO"));
-        LabelPetF.setText(LUGARES.get(Seleccion[0].toString(), "PETF"));
-        LabelWifi.setText(LUGARES.get(Seleccion[0].toString(), "WIFI"));
-        LabelDir.setText(LUGARES.get(Seleccion[0].toString(), "DIRECCION"));
-        LabelDesc.setText("Capacidad: " + LUGARES.get(Seleccion[0].toString(), "CAPACIDAD"));
+        System.out.println("Lugar seleccionado: " + seleccionLugar);
+        LabelNombre.setText(LUGARES.get(seleccionLugar, "NOMBRE"));
+        LabelCiudad.setText(LUGARES.get(seleccionLugar, "CIUDAD"));
+        LabelPais.setText(LUGARES.get(seleccionLugar, "PAIS"));
+        LabelPrecio.setText(LUGARES.get(seleccionLugar, "PRECIO"));
+        LabelPetF.setText(LUGARES.get(seleccionLugar, "PETF"));
+        LabelWifi.setText(LUGARES.get(seleccionLugar, "WIFI"));
+        LabelDir.setText(LUGARES.get(seleccionLugar, "DIRECCION"));
+        LabelDesc.setText("Capacidad: " + LUGARES.get(seleccionLugar, "CAPACIDAD"));
         //jButton1.setIcon(LUGARES.get(Seleccion[0].toString(), "DI"));
     }//GEN-LAST:event_jButton2ActionPerformed
 

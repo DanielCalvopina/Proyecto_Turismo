@@ -63,14 +63,7 @@ public class ALMACENAMIENTO_CLIENTES {
                 //System.out.println(BuscarPunteroAtributo(Atributo,Nombre)+"puntero");
                 switch(Atributo)
                 {
-                    case "NOMBRE" -> {
-                        System.out.println("x");
-                        return ""+RAC.readInt();
-                    }
-                    case "APELLIDO" -> {
-                        return ""+RAC.readDouble();
-                    }
-                    case "DIRECCION", "CONTRASENA" -> {
+                    case "NOMBRE", "APELLIDO", "DIRECCION", "CONTRASENA" -> {
                         String aux="";
                         for(int i=0;i<CharsDe(Atributo);i++)
                         {
