@@ -6,7 +6,8 @@ package proyecto_d_turismo;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.Icon;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USUARIO
@@ -21,6 +22,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private String seleccionLugar;
     private ArrayList<Object[]> ListaLugares;;
     private Object[] Seleccion;
+    private DefaultTableModel BXP = new DefaultTableModel();
     ALMACENAMIENTO_DATOS LUGARES;
     ALMACENAMIENTO_CLIENTES CLIENTES;
 
@@ -48,7 +50,6 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         BT_SAL_DATOS = new javax.swing.JButton();
-        BT_SAL_DATOS1 = new javax.swing.JButton();
         BT_SAL_DATOS2 = new javax.swing.JButton();
         BT_SAL_DATOS3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -78,11 +79,12 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         LabelDesc = new javax.swing.JLabel();
         LabelDir = new javax.swing.JLabel();
         cb_lugar = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        CONSULTA = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TB_CONS = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -122,22 +124,26 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         });
         jPanel3.add(BT_SAL_DATOS);
 
-        BT_SAL_DATOS1.setBackground(new java.awt.Color(0, 0, 0));
-        BT_SAL_DATOS1.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
-        BT_SAL_DATOS1.setForeground(new java.awt.Color(255, 255, 0));
-        BT_SAL_DATOS1.setText("RESERVACION");
-        jPanel3.add(BT_SAL_DATOS1);
-
         BT_SAL_DATOS2.setBackground(new java.awt.Color(0, 0, 0));
         BT_SAL_DATOS2.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_SAL_DATOS2.setForeground(new java.awt.Color(255, 255, 0));
-        BT_SAL_DATOS2.setText("CONSULTAS");
+        BT_SAL_DATOS2.setText("RESERVAS");
+        BT_SAL_DATOS2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_SAL_DATOS2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(BT_SAL_DATOS2);
 
         BT_SAL_DATOS3.setBackground(new java.awt.Color(0, 0, 0));
         BT_SAL_DATOS3.setFont(new java.awt.Font("Felix Titling", 3, 18)); // NOI18N
         BT_SAL_DATOS3.setForeground(new java.awt.Color(255, 255, 0));
-        BT_SAL_DATOS3.setText("FACTURAR");
+        BT_SAL_DATOS3.setText("CONSULTAS");
+        BT_SAL_DATOS3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_SAL_DATOS3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(BT_SAL_DATOS3);
 
         jPanel1.add(jPanel3);
@@ -303,6 +309,9 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 255, 0));
+
         javax.swing.GroupLayout ING_DATOS1Layout = new javax.swing.GroupLayout(ING_DATOS1);
         ING_DATOS1.setLayout(ING_DATOS1Layout);
         ING_DATOS1Layout.setHorizontalGroup(
@@ -315,8 +324,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(cb_lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jButton2))
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -359,18 +367,19 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(LabelPais, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(6, 6, 6)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DESCRIPCION1)
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                         .addComponent(DESCRIPCION2)
                                         .addGap(40, 40, 40)
-                                        .addComponent(LabelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                        .addComponent(LabelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(ING_DATOS1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
                     .addContainerGap(705, Short.MAX_VALUE)
@@ -385,21 +394,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(cb_lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ING_DATOS1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(DESCRIPCION1)
-                            .addComponent(LabelNombre))
-                        .addGap(27, 27, 27)
-                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(DESCRIPCION2)
-                            .addComponent(LabelCiudad)
-                            .addComponent(LabelDesc))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -422,13 +417,27 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelWifi)
-                            .addComponent(jLabel22))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(jLabel22)))
+                    .addGroup(ING_DATOS1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(DESCRIPCION1)
+                            .addComponent(LabelNombre))
+                        .addGap(27, 27, 27)
+                        .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(DESCRIPCION2)
+                            .addComponent(LabelCiudad)
+                            .addComponent(LabelDesc))
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ING_DATOS1Layout.createSequentialGroup()
                     .addGap(91, 91, 91)
                     .addComponent(LabelDir)
-                    .addContainerGap(271, Short.MAX_VALUE)))
+                    .addContainerGap(228, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -440,50 +449,65 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(ING_DATOS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(ING_DATOS1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 99, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, "card2");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
+        CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("BUSCAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        TB_CONS.setBackground(new java.awt.Color(0, 0, 0));
+        TB_CONS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        TB_CONS.setForeground(new java.awt.Color(255, 255, 255));
+        TB_CONS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(TB_CONS);
+
+        javax.swing.GroupLayout CONSULTALayout = new javax.swing.GroupLayout(CONSULTA);
+        CONSULTA.setLayout(CONSULTALayout);
+        CONSULTALayout.setHorizontalGroup(
+            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(jButton1)
+                .addContainerGap(211, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+        CONSULTALayout.setVerticalGroup(
+            CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CONSULTALayout.createSequentialGroup()
+                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.add(jPanel6, "card3");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel9, "card4");
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 912, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
-        );
-
-        jPanel4.add(jPanel10, "card5");
+        jPanel4.add(CONSULTA, "card2");
 
         jPanel1.add(jPanel4);
 
@@ -495,7 +519,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         pack();
@@ -569,7 +593,36 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        jLabel1.setText("Reservado con Éxito");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void BT_SAL_DATOS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOS2ActionPerformed
+
+        jPanel4.removeAll();
+        jPanel4.add(jPanel5);
+        jPanel4.repaint();
+        jPanel4.revalidate(); // TODO add your handling code here:
+    }//GEN-LAST:event_BT_SAL_DATOS2ActionPerformed
+
+    private void BT_SAL_DATOS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SAL_DATOS3ActionPerformed
+        // TODO add your handling code here:
+        jPanel4.removeAll();
+        jPanel4.add(CONSULTA);
+        jPanel4.repaint();
+        jPanel4.revalidate();
+    }//GEN-LAST:event_BT_SAL_DATOS3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String inds [] = {"Codigo","Nombre","PrecioxDia","Capacidad","Pais","Ciudad"};
+        BXP.setColumnIdentifiers(inds);
+        TB_CONS.setModel(BXP);
+        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
+        for (Object[] lugar: listado){
+            BXP.addRow(new Object[]{lugar[0],lugar[1],String.valueOf(lugar[7]),String.valueOf(lugar[8]),lugar[3],lugar[2]});
+            System.out.println(lugar);
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Anadir_Lugares(){
         for(int i = 0; i < ListaLugares.size(); i ++){
@@ -609,9 +662,9 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_SAL_DATOS;
-    private javax.swing.JButton BT_SAL_DATOS1;
     private javax.swing.JButton BT_SAL_DATOS2;
     private javax.swing.JButton BT_SAL_DATOS3;
+    private javax.swing.JPanel CONSULTA;
     private javax.swing.JComboBox<String> ComboBoxNDias;
     private javax.swing.JComboBox<String> ComboBoxNPersonas;
     private javax.swing.JLabel DESCRIPCION1;
@@ -625,10 +678,12 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPetF;
     private javax.swing.JLabel LabelPrecio;
     private javax.swing.JLabel LabelWifi;
+    private javax.swing.JTable TB_CONS;
     private javax.swing.JComboBox<String> cb_lugar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -639,13 +694,11 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
