@@ -2,8 +2,10 @@ package proyecto_d_turismo;
 
 public class Menu extends javax.swing.JFrame {
     private ALMACENAMIENTO_DATOS LUGARES;
-    public Menu(ALMACENAMIENTO_DATOS LUGARES) {
+    private ALMACENAMIENTO_CLIENTES CLIENTES;
+    public Menu(ALMACENAMIENTO_DATOS LUGARES, ALMACENAMIENTO_CLIENTES CLIENTES) {
         this.LUGARES = LUGARES;
+        this.CLIENTES = CLIENTES;
         initComponents();
     }
 
@@ -28,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         INGRESO = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 400));
@@ -127,7 +130,7 @@ public class Menu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                                 .addComponent(INGRESO)
                                 .addGap(25, 25, 25)))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,13 +154,17 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_d_turismo/pngegg.png"))); // NOI18N
 
+        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
@@ -177,9 +184,11 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addGap(20, 20, 20))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -199,6 +208,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          CreacionCliente a = new CreacionCliente(CLIENTES);
+          a.setTitle("Regístratee");
+          a.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void INGRESOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INGRESOActionPerformed
@@ -212,16 +224,21 @@ public class Menu extends javax.swing.JFrame {
           a.setVisible(true);
           Setear();
         }
-        /*else
+        else
         {
-            usuario = comprobarusuario(TT_USUARIO.getText(),TT_CONTRASENA.getText().toString());
-            if(usuario){
-                MENU_CLIENTE a = new MENU_CLIENTE();
-                a.setTitle("CLIENTE");
-                a.setVisible(true);
-                Setear();
-            }
-        }*/
+            jLabel6.setText("Usuario o Clave incorrectos");
+        }
+        usuario = comprobarusuario(TT_USUARIO.getText(),TT_CONTRASENA.getText());
+        if(usuario){
+            MENU_CLIENTE a = new MENU_CLIENTE();
+            a.setTitle("CLIENTE");
+            a.setVisible(true);
+            Setear();
+        }
+        else
+        {
+            jLabel6.setText("Usuario o Clave incorrectos");
+        }
     }//GEN-LAST:event_INGRESOActionPerformed
     public boolean comprobadmin(String Usuario, String Contrasena)
     {
@@ -230,13 +247,43 @@ public class Menu extends javax.swing.JFrame {
         }
         return false;
     }
-    /*public boolean comprobarusuario(String Usuario, String Contrasena)
+    private String Aumentar_EspaciosCedula(String Cedula){
+        Cedula = TT_USUARIO.getText();
+        if(Cedula.length()<= 13){
+            while (Cedula.length()!= 13){
+                Cedula += "X";
+            }
+        }
+        if(Cedula.length()> 13){
+            Cedula = Cedula.substring(0, 13);
+        }
+        return Cedula;
+    }
+    private String Aumentar_EspaciosContra(String Contrasena){
+        Contrasena = TT_CONTRASENA.getText();
+        if(Contrasena.length()<= 8){
+            while (Contrasena.length()!= 8){
+                Contrasena += "X";
+            }
+        }
+        if(Contrasena.length()> 8){
+            Contrasena = Contrasena.substring(0, 8);
+        }
+        return Contrasena;
+    }
+    public boolean comprobarusuario(String Usuario, String Contrasena)
     {
-        //Logica para ver si los usuarios estan o no en el documento
-    }*/
+        Usuario = Aumentar_EspaciosCedula(Usuario);
+        Contrasena = Aumentar_EspaciosContra(Contrasena);
+        if(Contrasena.contains(CLIENTES.get(Usuario, "CONTRASENA"))){
+                return true;
+       }
+       return false;
+    }
     public void Setear(){
         TT_USUARIO.setText("");
         TT_CONTRASENA.setText("");
+        jLabel6.setText("");
     }
     
     public static void main(String args[]) {
@@ -257,6 +304,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
