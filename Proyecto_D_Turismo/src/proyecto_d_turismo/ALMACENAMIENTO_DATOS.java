@@ -374,6 +374,46 @@ public class ALMACENAMIENTO_DATOS {
         }
         return listado;
     }
+    public String get(String Codigo,String Atributo)
+    {
+        //System.out.println("Buscado "+Atributo);
+        try(RandomAccessFile RAC=new RandomAccessFile(file,"rw"))
+        {
+            if(Existe(Codigo))
+            {
+                RAC.seek(BuscarPunteroAtributo(Atributo,Codigo)); 
+                //System.out.println(BuscarPunteroAtributo(Atributo,Nombre));
+                //System.out.println(BuscarPunteroAtributo(Atributo,Nombre)+"puntero");
+                switch(Atributo)
+                {
+
+                    case "NOMBRE","CIUDAD", "PAIS", "WIFI", "PETF", "DIRECCION", "PRECIO", "CAPACIDAD", "DI" -> {
+                        String aux="";
+                        for(int i=0;i<CharsDe(Atributo);i++)
+                        {
+                            System.out.println("x");
+                            aux=aux+RAC.readChar();
+                        }
+                        RAC.close();
+                        return aux;
+                    }
+                    default -> {
+                        RAC.close();
+                        return "null";
+                    }
+                }
+                   
+            }
+            RAC.close();
+            System.out.println("Fuera");
+            return "null";
+        }
+        catch(IOException e)
+        {
+            System.out.println("IOE");
+            return "IOException";
+        }
+    }
     public void Borrar()
     {
         try(RandomAccessFile RAC=new RandomAccessFile(file,"rw"))

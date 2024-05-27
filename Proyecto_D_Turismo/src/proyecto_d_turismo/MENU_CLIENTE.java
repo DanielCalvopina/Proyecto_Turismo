@@ -6,6 +6,7 @@ package proyecto_d_turismo;
 import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.Icon;
 /**
  *
  * @author USUARIO
@@ -18,6 +19,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private String seleccionNpersonas;
     private String seleccionNdias;
     private ArrayList<Object[]> ListaLugares;;
+    private Object[] Seleccion;
     ALMACENAMIENTO_DATOS LUGARES;
     ALMACENAMIENTO_CLIENTES CLIENTES;
 
@@ -61,21 +63,22 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         DESCRIPCION1 = new javax.swing.JLabel();
         DESCRIPCION2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         ComboBoxNPersonas = new javax.swing.JComboBox<>();
         ComboBoxNDias = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        LabelNombre = new javax.swing.JLabel();
+        LabelCiudad = new javax.swing.JLabel();
+        LabelPais = new javax.swing.JLabel();
+        LabelPetF = new javax.swing.JLabel();
+        LabelPrecio = new javax.swing.JLabel();
+        LabelWifi = new javax.swing.JLabel();
+        LabelDesc = new javax.swing.JLabel();
+        LabelDir = new javax.swing.JLabel();
         ComboBoxLugar = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -183,19 +186,6 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         DESCRIPCION2.setForeground(new java.awt.Color(255, 255, 255));
         DESCRIPCION2.setText("DESCRIPCION:");
 
-        jPanel7.setPreferredSize(new java.awt.Dimension(300, 150));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
         jPanel8.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel27.setFont(new java.awt.Font("Felix Titling", 0, 14)); // NOI18N
@@ -257,41 +247,55 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jLabel18.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("---------------------------");
+        LabelNombre.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelNombre.setForeground(new java.awt.Color(255, 255, 255));
+        LabelNombre.setText("---------------------------");
 
-        jLabel19.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("---------------------------");
+        LabelCiudad.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelCiudad.setForeground(new java.awt.Color(255, 255, 255));
+        LabelCiudad.setText("---------------------------");
 
-        jLabel20.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("---------------------------");
+        LabelPais.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelPais.setForeground(new java.awt.Color(255, 255, 255));
+        LabelPais.setText("---------------------------");
 
-        jLabel21.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("---------------------------");
+        LabelPetF.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelPetF.setForeground(new java.awt.Color(255, 255, 255));
+        LabelPetF.setText("---------------------------");
 
-        jLabel23.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("---------------------------");
+        LabelPrecio.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        LabelPrecio.setText("---------------------------");
 
-        jLabel24.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("---------------------------");
+        LabelWifi.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelWifi.setForeground(new java.awt.Color(255, 255, 255));
+        LabelWifi.setText("---------------------------");
 
-        jLabel25.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("---------------------------");
+        LabelDesc.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelDesc.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDesc.setText("---------------------------");
 
-        jLabel26.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("---------------------------");
+        LabelDir.setFont(new java.awt.Font("Felix Titling", 1, 18)); // NOI18N
+        LabelDir.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDir.setText("---------------------------");
 
         ComboBoxLugar.setBackground(new java.awt.Color(0, 0, 0));
         ComboBoxLugar.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxLugarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Cargar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ING_DATOS1Layout = new javax.swing.GroupLayout(ING_DATOS1);
         ING_DATOS1.setLayout(ING_DATOS1Layout);
@@ -303,7 +307,10 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
@@ -323,20 +330,20 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                         .addComponent(jLabel22)
                                         .addGap(57, 57, 57)))
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(LabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelPetF, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelWifi, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(LabelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(LabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,7 +351,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                                                 .addGap(15, 15, 15)
                                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(LabelPais, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(6, 6, 6)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,13 +359,13 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                 .addComponent(DESCRIPCION2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addComponent(LabelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))))
+                .addContainerGap())
             .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
                     .addContainerGap(705, Short.MAX_VALUE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelDir, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(39, 39, 39)))
         );
         ING_DATOS1Layout.setVerticalGroup(
@@ -367,50 +374,51 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(DESCRIPCION1)
-                            .addComponent(jLabel18))
+                            .addComponent(LabelNombre))
                         .addGap(27, 27, 27)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(DESCRIPCION2)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel25))
-                        .addGap(35, 35, 35)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LabelCiudad)
+                            .addComponent(LabelDesc))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ING_DATOS1Layout.createSequentialGroup()
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(ING_DATOS1Layout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel15)
-                                    .addComponent(jLabel20)))
+                                    .addComponent(LabelPais)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ING_DATOS1Layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
-                            .addComponent(jLabel23))
+                            .addComponent(LabelPrecio))
                         .addGap(18, 18, 18)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jLabel21)
+                            .addComponent(LabelPetF)
                             .addComponent(jButton4))
                         .addGap(18, 18, 18)
                         .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel24)
+                            .addComponent(LabelWifi)
                             .addComponent(jLabel22))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(ING_DATOS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ING_DATOS1Layout.createSequentialGroup()
                     .addGap(91, 91, 91)
-                    .addComponent(jLabel26)
+                    .addComponent(LabelDir)
                     .addContainerGap(271, Short.MAX_VALUE)))
         );
 
@@ -437,7 +445,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel6, "card3");
@@ -450,7 +458,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel9, "card4");
@@ -463,7 +471,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel10, "card5");
@@ -496,6 +504,24 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
         Anadir_Lugares();
         // TODO add your handling code here:
     }//GEN-LAST:event_BT_SAL_DATOSActionPerformed
+
+    private void ComboBoxLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxLugarActionPerformed
+        Seleccion = (Object[]) ComboBoxLugar.getSelectedItem();
+        
+    }//GEN-LAST:event_ComboBoxLugarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println("Lugar seleccionado: " + Seleccion[0].toString());
+        LabelNombre.setText(LUGARES.get(Seleccion[0].toString(), "NOMBRE"));
+        LabelCiudad.setText(LUGARES.get(Seleccion[0].toString(), "CIUDAD"));
+        LabelPais.setText(LUGARES.get(Seleccion[0].toString(), "PAIS"));
+        LabelPrecio.setText(LUGARES.get(Seleccion[0].toString(), "PRECIO"));
+        LabelPetF.setText(LUGARES.get(Seleccion[0].toString(), "PETF"));
+        LabelWifi.setText(LUGARES.get(Seleccion[0].toString(), "WIFI"));
+        LabelDir.setText(LUGARES.get(Seleccion[0].toString(), "DIRECCION"));
+        LabelDesc.setText("Capacidad: " + LUGARES.get(Seleccion[0].toString(), "CAPACIDAD"));
+        //jButton1.setIcon(LUGARES.get(Seleccion[0].toString(), "DI"));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Anadir_Lugares(){
         for(int i = 0; i < ListaLugares.size(); i ++){
@@ -547,6 +573,16 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel DESCRIPCION1;
     private javax.swing.JLabel DESCRIPCION2;
     private javax.swing.JPanel ING_DATOS1;
+    private javax.swing.JLabel LabelCiudad;
+    private javax.swing.JLabel LabelDesc;
+    private javax.swing.JLabel LabelDir;
+    private javax.swing.JLabel LabelNombre;
+    private javax.swing.JLabel LabelPais;
+    private javax.swing.JLabel LabelPetF;
+    private javax.swing.JLabel LabelPrecio;
+    private javax.swing.JLabel LabelWifi;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -554,15 +590,7 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel1;
@@ -572,7 +600,6 @@ public class MENU_CLIENTE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
