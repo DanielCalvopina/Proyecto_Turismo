@@ -155,6 +155,7 @@ public class ALMACENAMIENTO_CLIENTES {
                 break;
         }
         System.out.println("Salte "+bytesHasta+" bytes");
+        
         return bytesHasta;
     }
 
