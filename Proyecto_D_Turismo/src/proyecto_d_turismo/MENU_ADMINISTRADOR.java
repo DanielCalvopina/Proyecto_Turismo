@@ -61,7 +61,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
         SAL_DATOS = new javax.swing.JPanel();
         CARGAR_DATOS = new javax.swing.JPanel();
         CONSULTA = new javax.swing.JPanel();
-        CB_BUSCAR = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TB_CONS = new javax.swing.JTable();
@@ -350,11 +349,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         CONSULTA.setBackground(new java.awt.Color(0, 0, 0));
 
-        CB_BUSCAR.setBackground(new java.awt.Color(0, 0, 0));
-        CB_BUSCAR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        CB_BUSCAR.setForeground(new java.awt.Color(255, 255, 255));
-        CB_BUSCAR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES", "LUGARES", " " }));
-
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -388,28 +382,20 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CONSULTALayout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CONSULTALayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(CONSULTALayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(83, 83, 83)
+                .addComponent(jButton1)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         CONSULTALayout.setVerticalGroup(
             CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CONSULTALayout.createSequentialGroup()
                 .addGroup(CONSULTALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CONSULTALayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(CB_BUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton1))
-                    .addGroup(CONSULTALayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CONSULTALayout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -538,11 +524,14 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     }//GEN-LAST:event_TT_CAPACIDADActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if ("CLIENTES".equals(CB_BUSCAR.getSelectedItem().toString())){
-            ConsultaCliente();
-        }
-        else {
-            ConsultaLugares();
+        String inds [] = {"Codigo","Nombre","PrecioxDia","Capacidad","Pais","Ciudad"};
+        BXP.setColumnIdentifiers(inds);
+        TB_CONS.setModel(BXP);
+        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
+        for (Object[] lugar: listado){           
+            BXP.addRow(new Object[]{lugar[0],lugar[1],String.valueOf(lugar[7]),String.valueOf(lugar[8]),lugar[3],lugar[2]});
+            System.out.println(lugar);
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -601,37 +590,17 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
 
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            String destinationDirectory = "C:\\Users\\USUARIO\\OneDrive\\Documents\\GitHub\\Proyecto_Turismo\\Proyecto_D_Turismo\\src\\proyecto_d_turismo"; // Ruta del directorio destino
-            try {
-                moveFileToDirectory(selectedFile, destinationDirectory);
-                System.out.println("Imagen movida correctamente a: " + destinationDirectory);
-            } catch (IOException e) {
-                System.err.println("Error al mover la imagen: " + e.getMessage());
-            }
-        } 
+            imagen = selectedFile.getAbsolutePath();
+            // Aquí puedes manejar la imagen seleccionada
+            System.out.println("Imagen seleccionada: " + selectedFile.getAbsolutePath());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
     private static void moveFileToDirectory(File sourceFile, String destinationDirectory) throws IOException {
         Path sourcePath = sourceFile.toPath();
         Path destinationPath = new File(destinationDirectory, sourceFile.getName()).toPath();
         Files.move(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
     }
-    public void ConsultaCliente(){
-        
-    }
-    public void ConsultaLugares(){
-        String inds [] = {"Codigo","Nombre","PrecioxDia","Capacidad","Pais","Ciudad"};
-        BXP.setColumnIdentifiers(inds);
-        TB_CONS.setModel(BXP);
-        ArrayList<Object[]> listado = this.LUGARES.getListadoLugares();
-        for (Object[] lugar: listado){           
-            BXP.addRow(new Object[]{lugar[0],lugar[1],String.valueOf(lugar[7]),String.valueOf(lugar[8]),lugar[3],lugar[2]});
-            System.out.println(lugar);
 
-        }
-    }
-    public void Consulta(File Archivo,String Consultar){
-        
-    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -645,7 +614,6 @@ public class MENU_ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JButton BT_CONSULTA;
     private javax.swing.JButton BT_ING_DATOS;
     private javax.swing.JPanel CARGAR_DATOS;
-    private javax.swing.JComboBox<String> CB_BUSCAR;
     private javax.swing.JPanel CONSULTA;
     private javax.swing.JPanel ING_DATOS;
     private javax.swing.JPanel PANEL_PRINCIPAL;

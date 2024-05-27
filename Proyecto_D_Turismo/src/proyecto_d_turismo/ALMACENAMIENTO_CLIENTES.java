@@ -4,6 +4,7 @@ package proyecto_d_turismo;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 public class ALMACENAMIENTO_CLIENTES {
     
@@ -155,7 +156,6 @@ public class ALMACENAMIENTO_CLIENTES {
                 break;
         }
         System.out.println("Salte "+bytesHasta+" bytes");
-        
         return bytesHasta;
     }
 
@@ -270,5 +270,86 @@ public class ALMACENAMIENTO_CLIENTES {
             
         }
         return Puntero;
+    }
+     public ArrayList getListadoClientes()
+    {
+        ArrayList<Object[]> listado = new ArrayList<Object[]>(); 
+        try(RandomAccessFile RAC =new RandomAccessFile(file,"rw"))
+        {
+            Object[] Lugares =new Object[10];
+            RAC.seek(0);
+            while(RAC.getFilePointer()<RAC.length())
+            {
+                String Cod="";
+                String Nom ="";
+                String Ciu="";
+                String Pais="";
+                Boolean Wifi = false;
+                Boolean Petf = false;
+                String Dic = "";
+                double Prec ;
+                String img="";
+                int Capacidad ;
+                for(int i =0;i<CharsDe("CODIGO");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Cod+=Lectura;
+                    }
+                }
+                for(int i =0;i<CharsDe("NOMBRE");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Nom+=Lectura;
+                    }
+                }
+                for(int i =0;i<CharsDe("CIUDAD");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Ciu+=Lectura;
+                    }
+                }
+                for(int i =0;i<CharsDe("PAIS");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Pais+=Lectura;
+                    }
+                }
+                Wifi = RAC.readBoolean();
+                Petf = RAC.readBoolean();
+                for(int i =0;i<CharsDe("DIRECCION");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        Dic+=Lectura;
+                    }
+                }
+                Prec = RAC.readDouble();
+                Capacidad = RAC.readInt();
+                for(int i =0;i<CharsDe("DI");i++)
+                {
+                    char Lectura;
+                    Lectura = RAC.readChar();
+                    if ('-' != Lectura){
+                        img=img+Lectura;
+                    }
+                }
+                listado.add(new Object[] {Cod,Nom,Ciu,Pais,Wifi,Petf,Dic,Prec,Capacidad,img});
+            }
+            RAC.close();         
+            System.out.println("Guardado Correctamene");
+        }
+        catch(IOException e)
+        {
+        }
+        return listado;
     }
 }
